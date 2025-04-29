@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+
+  <style>
+    
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    video.bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ff9800;
+    }
+
+    section {
+      padding: 50px 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      animation: fadeIn 1s ease-in-out;
+      margin: 20px auto;
+      max-width: 1000px;
+      border-radius: 10px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .clearfix::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    .girl-logo img {
+      float: left;
+      width: 150px;
+      margin-right: 20px;
+      border-radius: 50%;
+    }
+
+    .text-content h1 {
+      font-size: 28px;
+      color: #222;
+    }
+
+    form input, form textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    input[type="submit"], button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border-radius: 5px;
+    }
+
+    input[type="submit"]:hover, button:hover {
+      background-color: #45a049;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 20px;
+      text-align: center;
+      border-radius: 12px;
+      width: 200px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card i {
+      font-size: 40px;
+      color: #ff5722;
+    }
+
+    .project-card {
+      width: 300px;
+      margin: 10px;
+      perspective: 1000px;
+    }
+
+    .projects-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .card-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-back {
+      background: #fafafa;
+      transform: rotateY(180deg);
+      padding: 20px;
+    }
+
+    .project-card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .social-links a {
+      font-size: 20px;
+      margin: 0 10px;
+      color: #555;
+    }
+
+    .social-links a:hover {
+      color: #000;
+    }
+
+    
+    .help-content {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .help-section button {
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      background: #333;
+      color: white;
+      padding: 20px;
+    }
+
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    
+    @media (max-width: 768px) {
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .girl-logo img {
+        float: none;
+        display: block;
+        margin: 0 auto;
+      }
+
+      .text-content {
+        text-align: center;
+      }
+
+      .card-container, .projects-section {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  
+  <video autoplay muted loop class="bg-video">
+    <source src="./images/mr.mp4" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+
+
+  <header>
+    <nav>
+      <a href="#home">Home</a> 
+      <a href="#login">Login</a> 
+      <a href="#contact">Contact</a> 
+      <a href="#skills">Skills</a> 
+      <a href="#projects">Projects</a> 
+      <a href="#about">About</a>
+      <a href="#register">Register</a>
+    </nav>
+  </header>
+  <section id="home">
+    <h1 id="home-header">Home</h1>
+    <div class="clearfix">
+        <div class="girl-logo">
+          <img src="https://cdn-icons-png.flaticon.com/512/201/201634.png" alt="Girl Logo">
+        </div>
+        <div class="text-content">
+          <h1>Welcome to My Portfolio</h1>
+          <p>This is a brief introduction about me. I am passionate about design, development, and solving problems creatively.</p>
+        </div>
+      </div>
+  
+      
+
+    </section>
+
+
+<section id="login">
+    <h2 id="login-header">Login</h2>
+    <form onsubmit="handleLogin(event)">
+      <label for="username">Username:</label>
+      <input type="text" id="username" placeholder="username" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" placeholder="emailid" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" placeholder="enter password" required>
+
+      <input type="submit" value="Login">
+    </form>
+</section>
+    
+<section id="about">
+    <h2 id="about-header">About</h2>
+    <div class="container">
+        <img src="images\WhatsApp Image 2025-01-03 at 19.09.53_59c97cc4.jpg" alt="Meghana Reddy" class="profile-img">
+        
+        <section>
+          <h1>MEGHANA REDDY</h1>
+          <p>Hello! I'm <strong>Meghana Reddy</strong>, "I am passionate about learning and staying motivated through activities like listening to music. I am dedicated to my work, setting clear goals and staying organized. When working on projects, I break them down into smaller tasks to manage them effectively. I am creative in helping others and turning hard work into smart work. I approach challenges with careful thought, taking time to develop the best solutions. I enjoy collaborating in team environments, where we can share knowledge and learn from each other. Hard work is a key motivator for me, and I adapt quickly to new situations. One of my strengths is recognizing the importance of financial success in today's world, as it plays a crucial role in personal and professional growth."
+          </p>
+  
+          <!-- Contact Information -->
+          <div class="contact-info">
+            <p><strong>Email:</strong> meghana.reddy@example.com</p>
+            <p><strong>Mobile:</strong> +91 9876543210</p>
+          </div>
+        </section>
+      </div>
+</section>
+
+<section id="contact">
+    <h2 id="con-header">Contact</h2>
+    <div class="contact-form">
+        <h2>Contact Us</h2>
+        <form action="submit_contact.php" method="POST">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+  
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+  
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" placeholder="Enter your message" rows="4" required></textarea>
+  
+          <input type="submit" value="Submit">
+        </form>
+  
+        <div class="social-links">
+          <p>Follow us on social media:</p>
+          <a href="https://www.facebook.com/TejaGaddam" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://wa.me/9989275969" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/reddy_81972" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+  
+      
+      </div>
+  
+      <!-- Help Section -->
+      <div class="help-section">
+        <p><strong>Need Help?</strong> Click below to learn more about my projects.</p>
+        <button onclick="toggleHelpContent()">Show Help</button>
+  
+        <!-- Help Content (hidden by default) -->
+        <div id="helpContent" class="help-content">
+          <h3>About My Projects</h3>
+          <p>
+            My projects primarily focus on creating user-friendly and dynamic web applications.
+            They include both frontend and backend components, ensuring a smooth and interactive experience for the users.
+            I use modern technologies like Angular, React, and Node.js for building scalable and responsive applications.
+            My goal is to solve real-world problems by developing innovative and efficient solutions that enhance productivity and user satisfaction.
+          </p>
+        </div>
+      </div>
+</section>
+
+
+
+<section id="resister">
+    <h2 id="reg-header">Register</h2>
+    <section>
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="username">
+    
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="emailid">
+    
+        <label>Gender:</label>
+        <label for="id1"><input type="radio" value="female" name="gender" id="id1">Female</label>
+        <label for="id2"><input type="radio" value="male" name="gender" id="id2">Male</label>
+    
+        <label>Nationality:</label>
+        <label for="id3"><input type="checkbox" value="india" name="nationality" id="id3">India</label>
+        <label for="id4"><input type="checkbox" value="usa" name="nationality" id="id4">USA</label>
+    
+        <label for="dob">Date of Birth:</label>
+        <input type="date" name="dob" id="dob" placeholder="dd-mm-yyyy">
+    
+        <label for="mobile">Mobile Number:</label>
+        <input type="text" id="mobile" placeholder="enter mobile number">
+    
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="enter password">
+    
+        <label for="city">City:</label>
+        <select name="city" id="city">
+          <option value="guntur">GUNTUR</option>
+          <option value="delhi">DELHI</option>
+          <option value="nrt">NRT</option>
+        </select>
+        <input type="submit" value="Submit" onclick="registerUser(event)">
+</section>
+    
+</section>
+<section id="skills">
+    <h1 id="skl-header">My Skills Are</h1>
+
+    <!-- Skill cards -->
+    <div class="card-container">
+        <div class="card">
+            <i class="fa-brands fa-html5"></i>
+            <a href="https://html.com" target="_blank">HTML</a>
+        </div>
+        <div class="card">
+            <i class="fa-brands fa-python"></i>
+            <a href="https://python.com/" target="_blank">PYTHON</a>
+        </div>
+        <div class="card">
+            <i class="fa-brands fa-css3-alt"></i>  
+            <a href="https://css.com/" target="_blank">CSS</a>
+        </div>
+        <div class="card">
+            <i class="fa-solid fa-c"></i>  
+            <a href="https://c.com/" target="_blank">C LANGUAGE</a>
+        </div>
+    </div>
+</section>
+
+<section id="projects">
+    <h2 id="pro-header">Projects</h2>
+    <div class="projects-section">
+        <div class="project-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="./images/th(6).jpg" alt="Project 1">
+            </div>
+            <div class="card-back">
+              <h3>AWARENESS ON AGRICULTURE</h3>
+              <p>we have created a web page using html,css,angular.To bring awareness to the present generation about agriculture</p>
+            </div>
+          </div>
+        </div>
+    
+        <div class="project-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="./images/th(7).jpg" alt="Project 2">
+            </div>
+            <div class="card-back">
+              <h3>FORMULA FOUNDATION</h3>
+              <p>i have created a web page based on maths formulas for easy acess to children . The web page was created using html,css,react.js</p>
+            </div>
+          </div>
+        </div>
+    
+        <div class="project-card">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="./images/th(8).jpg" alt="Project 3">
+            </div>
+            <div class="card-back">
+              <h3>SPA</h3>
+              <P> I have created a web page using only html . Here, i gave a brief note about it</p>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+
+
+
+
+<footer>
+    <p>&copy; 2025 My Portfolio</p>
+</footer>
+
+</body>
+</html>
+ 

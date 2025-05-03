@@ -5,15 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
-
   <style>
-    
     body, html {
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
       scroll-behavior: smooth;
     }
+    
 
     video.bg-video {
       position: fixed;
@@ -25,7 +24,42 @@
       object-fit: cover;
     }
 
+
+
+
     header {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: typing 3s steps(40, end) forwards, blink 0.75s step-end infinite;
+    }
+
+    header video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    header h1 {
+      font-size: 3em;
+      padding: 20px;
+      border-radius: 10px;
+      animation: fadeInOut 2s ease-out;
+      color:#fafafa;
+    }
+
+
+
+
+    nav{
       background-color: rgba(0, 0, 0, 0.7);
       padding: 10px 0;
       text-align: center;
@@ -55,10 +89,12 @@
       border-radius: 10px;
     }
 
-    h1, h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #333;
+    h1, h2, p {
+      animation: entrance down 0.8s ease-in-out;
+    }
+
+    img {
+      animation: grow 1s ease-in-out;
     }
 
     .clearfix::after {
@@ -72,6 +108,7 @@
       width: 150px;
       margin-right: 20px;
       border-radius: 50%;
+      animation: floating 3s ease-in-out infinite;
     }
 
     .text-content h1 {
@@ -102,10 +139,10 @@
     }
 
     .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 20px;
+      justify-items: center;
     }
 
     .card {
@@ -113,9 +150,10 @@
       padding: 20px;
       text-align: center;
       border-radius: 12px;
-      width: 200px;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       transition: transform 0.3s;
+      animation: slideUp 0.8s ease-in-out;
+      animation: light 2s infinite;
     }
 
     .card:hover {
@@ -127,16 +165,18 @@
       color: #ff5722;
     }
 
-    .project-card {
-      width: 300px;
-      margin: 10px;
-      perspective: 1000px;
+    .projects-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      justify-items: center;
     }
 
-    .projects-section {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+    .project-card {
+      width: 100%;
+      max-width: 300px;
+      perspective: 1000px;
+      animation: slideLeft 1s ease-in-out;
     }
 
     .card-inner {
@@ -176,16 +216,17 @@
       font-size: 20px;
       margin: 0 10px;
       color: #555;
+      animation: bubble 2s infinite ease-in-out;
     }
 
     .social-links a:hover {
       color: #000;
     }
 
-    
     .help-content {
       display: none;
       margin-top: 10px;
+      animation: expandUp 0.5s ease-in-out;
     }
 
     .help-section button {
@@ -197,15 +238,100 @@
       background: #333;
       color: white;
       padding: 20px;
+      animation: light 2s infinite;
     }
 
+    .about-photo {
+      float: right;
+      width: 200px;
+      margin-left: 20px;
+      border-radius: 10px;
+      animation: circle 1s ease-in-out;
+    }
 
     @keyframes fadeIn {
       from {opacity: 0;}
       to {opacity: 1;}
     }
 
-    
+    @keyframes slideIn {
+      from {transform: translateY(20px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+
+    @keyframes scaleIn {
+      from {transform: scale(0.9); opacity: 0;}
+      to {transform: scale(1); opacity: 1;}
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideLeft {
+      from { transform: translateX(-100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes expandUp {
+      from { transform: scaleY(0); opacity: 0; }
+      to { transform: scaleY(1); opacity: 1; }
+    }
+
+    @keyframes entrance {
+      from { transform: scale(0.5) rotate(-10deg); opacity: 0; }
+      to { transform: scale(1) rotate(0); opacity: 1; }
+    }
+
+    @keyframes pause {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    @keyframes floating {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes tossing {
+      0% { transform: rotate(-5deg); }
+      50% { transform: rotate(5deg); }
+      100% { transform: rotate(-5deg); }
+    }
+
+    @keyframes grow {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes circle {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes curls {
+      from { transform: rotateY(0deg); }
+      to { transform: rotateY(360deg); }
+    }
+
+    @keyframes bubble {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes light {
+      0% { box-shadow: 0 0 5px #fff; }
+      50% { box-shadow: 0 0 20px #ff0; }
+      100% { box-shadow: 0 0 5px #fff; }
+    }
+
     @media (max-width: 768px) {
       nav a {
         display: block;
@@ -222,23 +348,31 @@
         text-align: center;
       }
 
-      .card-container, .projects-section {
-        flex-direction: column;
-        align-items: center;
+      .card-container,
+      .projects-section {
+        grid-template-columns: 1fr;
+      }
+
+      .about-photo {
+        float: none;
+        display: block;
+        margin: 0 auto 20px;
       }
     }
-
   </style>
 </head>
 <body>
-  
   <video autoplay muted loop class="bg-video">
-    <source src="./images/mr.mp4" type="video/mp4" />
+    <source src="./videos/mr.mp4" type="video/mp4" />
     Your browser does not support HTML5 video.
   </video>
+  <header id = "header" onclick="scrollToHome()">
+    
 
+    <h1>Welcome to Meghana's Portfolio</h1>
+  </header>
 
-  <header>
+  
     <nav>
       <a href="#home">Home</a> 
       <a href="#login">Login</a> 
@@ -248,214 +382,173 @@
       <a href="#about">About</a>
       <a href="#register">Register</a>
     </nav>
-  </header>
-  <section id="home">
-    <h1 id="home-header">Home</h1>
-    <div class="clearfix">
-        <div class="girl-logo">
-          <img src="https://cdn-icons-png.flaticon.com/512/201/201634.png" alt="Girl Logo">
-        </div>
-        <div class="text-content">
-          <h1>Welcome to My Portfolio</h1>
-          <p>This is a brief introduction about me. I am passionate about design, development, and solving problems creatively.</p>
-        </div>
-      </div>
   
-      
+  
 
-    </section>
+  <section id="home">
+    <h1>Home</h1>
+    <div class="clearfix">
+      <div class="girl-logo">
+        <img src="https://cdn-icons-png.flaticon.com/512/201/201634.png" alt="Girl Logo">
+      </div>
+      <div class="text-content">
+        <h1>Welcome to My Portfolio</h1>
+        <p>I am passionate about design, development, and solving problems creatively.</p>
+      </div>
+    </div>
+  </section>
 
-
-<section id="login">
-    <h2 id="login-header">Login</h2>
-    <form onsubmit="handleLogin(event)">
-      <label for="username">Username:</label>
-      <input type="text" id="username" placeholder="username" required>
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" placeholder="emailid" required>
-
-      <label for="password">Password:</label>
-      <input type="password" id="password" placeholder="enter password" required>
-
+  <section id="login">
+    <h2>Login</h2>
+    <form onsubmit="event.preventDefault()">
+      <label>Username:</label>
+      <input type="text" placeholder="Enter username" required>
+      <label>Email:</label>
+      <input type="email" placeholder="Enter email" required>
+      <label>Password:</label>
+      <input type="password" placeholder="Enter password" required>
       <input type="submit" value="Login">
     </form>
-</section>
-    
-<section id="about">
-    <h2 id="about-header">About</h2>
-    <div class="container">
-        <img src="images\WhatsApp Image 2025-01-03 at 19.09.53_59c97cc4.jpg" alt="Meghana Reddy" class="profile-img">
-        
-        <section>
-          <h1>MEGHANA REDDY</h1>
-          <p>Hello! I'm <strong>Meghana Reddy</strong>, "I am passionate about learning and staying motivated through activities like listening to music. I am dedicated to my work, setting clear goals and staying organized. When working on projects, I break them down into smaller tasks to manage them effectively. I am creative in helping others and turning hard work into smart work. I approach challenges with careful thought, taking time to develop the best solutions. I enjoy collaborating in team environments, where we can share knowledge and learn from each other. Hard work is a key motivator for me, and I adapt quickly to new situations. One of my strengths is recognizing the importance of financial success in today's world, as it plays a crucial role in personal and professional growth."
-          </p>
-  
-          <!-- Contact Information -->
-          <div class="contact-info">
-            <p><strong>Email:</strong> meghana.reddy@example.com</p>
-            <p><strong>Mobile:</strong> +91 9876543210</p>
-          </div>
-        </section>
-      </div>
-</section>
+  </section>
 
-<section id="contact">
-    <h2 id="con-header">Contact</h2>
-    <div class="contact-form">
-        <h2>Contact Us</h2>
-        <form action="submit_contact.php" method="POST">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" placeholder="Enter your name" required>
-  
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" placeholder="Enter your email" required>
-  
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" placeholder="Enter your message" rows="4" required></textarea>
-  
-          <input type="submit" value="Submit">
-        </form>
-  
-        <div class="social-links">
-          <p>Follow us on social media:</p>
-          <a href="https://www.facebook.com/TejaGaddam" target="_blank"><i class="fab fa-facebook"></i></a>
-          <a href="https://wa.me/9989275969" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          <a href="https://www.instagram.com/reddy_81972" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
-  
-      
-      </div>
-  
-      <!-- Help Section -->
-      <div class="help-section">
-        <p><strong>Need Help?</strong> Click below to learn more about my projects.</p>
-        <button onclick="toggleHelpContent()">Show Help</button>
-  
-        <!-- Help Content (hidden by default) -->
-        <div id="helpContent" class="help-content">
-          <h3>About My Projects</h3>
-          <p>
-            My projects primarily focus on creating user-friendly and dynamic web applications.
-            They include both frontend and backend components, ensuring a smooth and interactive experience for the users.
-            I use modern technologies like Angular, React, and Node.js for building scalable and responsive applications.
-            My goal is to solve real-world problems by developing innovative and efficient solutions that enhance productivity and user satisfaction.
-          </p>
-        </div>
-      </div>
-</section>
+  <section id="about">
+    <h2><strong>MEGHANA REDDY</strong></h2>
+    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e" alt="Girl Photo" class="about-photo">
+    <p>"I am passionate about learning and staying motivated through activities like listening to music..."</p>
+    <p><strong>Email:</strong> meghana.reddy@example.com</p>
+    <p><strong>Mobile:</strong> +91 9876543210</p>
+  </section>
 
+  <section id="contact">
+    <h2>Contact</h2>
+    <form action="#" method="post">
+      <label>Name:</label>
+      <input type="text" required>
+      <label>Email:</label>
+      <input type="email" required>
+      <label>Message:</label>
+      <textarea rows="4" required></textarea>
+      <input type="submit" value="Submit">
+    </form>
 
-
-<section id="resister">
-    <h2 id="reg-header">Register</h2>
-    <section>
-        <label for="username">Username:</label>
-        <input type="text" id="username" placeholder="username">
-    
-        <label for="email">Email:</label>
-        <input type="email" id="email" placeholder="emailid">
-    
-        <label>Gender:</label>
-        <label for="id1"><input type="radio" value="female" name="gender" id="id1">Female</label>
-        <label for="id2"><input type="radio" value="male" name="gender" id="id2">Male</label>
-    
-        <label>Nationality:</label>
-        <label for="id3"><input type="checkbox" value="india" name="nationality" id="id3">India</label>
-        <label for="id4"><input type="checkbox" value="usa" name="nationality" id="id4">USA</label>
-    
-        <label for="dob">Date of Birth:</label>
-        <input type="date" name="dob" id="dob" placeholder="dd-mm-yyyy">
-    
-        <label for="mobile">Mobile Number:</label>
-        <input type="text" id="mobile" placeholder="enter mobile number">
-    
-        <label for="password">Password:</label>
-        <input type="password" id="password" placeholder="enter password">
-    
-        <label for="city">City:</label>
-        <select name="city" id="city">
-          <option value="guntur">GUNTUR</option>
-          <option value="delhi">DELHI</option>
-          <option value="nrt">NRT</option>
-        </select>
-        <input type="submit" value="Submit" onclick="registerUser(event)">
-</section>
-    
-</section>
-<section id="skills">
-    <h1 id="skl-header">My Skills Are</h1>
-
-    <!-- Skill cards -->
-    <div class="card-container">
-        <div class="card">
-            <i class="fa-brands fa-html5"></i>
-            <a href="https://html.com" target="_blank">HTML</a>
-        </div>
-        <div class="card">
-            <i class="fa-brands fa-python"></i>
-            <a href="https://python.com/" target="_blank">PYTHON</a>
-        </div>
-        <div class="card">
-            <i class="fa-brands fa-css3-alt"></i>  
-            <a href="https://css.com/" target="_blank">CSS</a>
-        </div>
-        <div class="card">
-            <i class="fa-solid fa-c"></i>  
-            <a href="https://c.com/" target="_blank">C LANGUAGE</a>
-        </div>
+    <div class="social-links">
+      <p>Follow us on social media:</p>
+      <a href="https://facebook.com/TejaGaddam" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://wa.me/9989275969" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://instagram.com/reddy_81972" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
-</section>
 
-<section id="projects">
-    <h2 id="pro-header">Projects</h2>
+    <div class="help-section">
+      <p><strong>Need Help?</strong> Click below to learn more about my projects.</p>
+      <button onclick="toggleHelpContent()">Show Help</button>
+      <div id="helpContent" class="help-content">
+        <h3>About My Projects</h3>
+        <p>I focus on user-friendly, modern web apps using Angular, React, and Node.js...</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h1>My Skills</h1>
+    <div class="card-container">
+      <div class="card"><i class="fa-brands fa-html5"></i><p>HTML</p></div>
+      <div class="card"><i class="fa-brands fa-css3-alt"></i><p>CSS</p></div>
+      <div class="card"><i class="fa-brands fa-python"></i><p>Python</p></div>
+      <div class="card"><i class="fa-solid fa-c"></i><p>C Language</p></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
     <div class="projects-section">
-        <div class="project-card">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="./images/th(6).jpg" alt="Project 1">
-            </div>
-            <div class="card-back">
-              <h3>AWARENESS ON AGRICULTURE</h3>
-              <p>we have created a web page using html,css,angular.To bring awareness to the present generation about agriculture</p>
-            </div>
+      <div class="project-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="./images/th(6).jpg" alt="Project 1">
           </div>
-        </div>
-    
-        <div class="project-card">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="./images/th(7).jpg" alt="Project 2">
-            </div>
-            <div class="card-back">
-              <h3>FORMULA FOUNDATION</h3>
-              <p>i have created a web page based on maths formulas for easy acess to children . The web page was created using html,css,react.js</p>
-            </div>
-          </div>
-        </div>
-    
-        <div class="project-card">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="./images/th(8).jpg" alt="Project 3">
-            </div>
-            <div class="card-back">
-              <h3>SPA</h3>
-              <P> I have created a web page using only html . Here, i gave a brief note about it</p>
-            </div>
+          <div class="card-back">
+            <h3>Agriculture Awareness</h3>
+            <p>Created using HTML, CSS, and Angular.</p>
           </div>
         </div>
       </div>
-</section>
+      <div class="project-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="./images/th(7).jpg" alt="Project 2">
+          </div>
+          <div class="card-back">
+            <h3>Formula Foundation</h3>
+            <p>Math formula site using HTML, CSS, and React.js.</p>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="./images/th(8).jpg" alt="Project 3">
+          </div>
+          <div class="card-back">
+            <h3>SPA</h3>
+            <p>Simple page using only HTML.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <section id="register">
+    <h2>Register</h2>
+    <form onsubmit="event.preventDefault()">
+      <label>Username:</label>
+      <input type="text" placeholder="Username"><br>
+      <label>Email:</label>
+      <input type="email" placeholder="Email"><br>
+      <label>Gender:</label>
+      <label><input type="radio" name="gender" value="female"> Female</label>
+      <label><input type="radio" name="gender" value="male"> Male</label><br>
+      <label>Nationality:</label>
+      <label><input type="checkbox" name="nationality" value="india"> India</label>
+      <label><input type="checkbox" name="nationality" value="usa"> USA</label><br>
+      <label>Date of Birth:</label>
+      <input type="date"><br>
+      <label>Mobile Number:</label>
+      <input type="text" placeholder="Mobile Number"><br>
+      <label>Password:</label>
+      <input type="password" placeholder="Password"><br>
+      <label>City:</label>
+      <select>
+        <option value="guntur">GUNTUR</option>
+        <option value="delhi">DELHI</option>
+        <option value="nrt">NRT</option>
+      </select>
+      <input type="submit" value="Submit">
+    </form>
+  </section>
 
+  <footer>
+    <p>&COPY; 2025 Meghana's Portfolio</p>
+  </footer>
 
-
-<footer>
-    <p>&copy; 2025 My Portfolio</p>
-</footer>
-
+  <script>
+    function toggleHelpContent() {
+      const helpContent = document.getElementById("helpContent");
+      helpContent.style.display = helpContent.style.display === "none" ? "block" : "none";
+    }
+  </script>
+  
+<script>
+  setTimeout(() => {
+    document.querySelector("nav").scrollIntoView({ behavior: "smooth" });
+  }, 5000);
+</script>
+  
+  
 </body>
-</html>
- 
+</html>                          
+
+
+
+<!--<video autoplay muted loop>
+      <source src="background.mp4" type="video/mp4">
+    </video>-->
